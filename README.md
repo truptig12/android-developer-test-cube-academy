@@ -10,7 +10,7 @@ As part of your assessment, you are required to complete an android application 
 -	Create a nomination
 
 #### Useful links
-- Designs: [Figma](https://www.figma.com/file/j9opgFDjgfmgsIcTpkvyEt/FED-Mini-Task-Flow?type=design&mode=design&t=cvBjihTJPiiIVaGK-1)
+- Designs: [Figma](https://www.figma.com/file/BAOzJacpI4IemeawyFlw5j/Mobile-Mini-Task-flow?type=design&node-id=2818-8902&mode=design&t=31N76gmtRrCVHnj9-4)
 - API documentation: [OpenAPI docs](https://cube-academy-api.cubeapis.com/docs)
 
 ### API requests
