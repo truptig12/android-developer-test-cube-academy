@@ -9,6 +9,7 @@ import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.Nominee
 import com.cube.cubeacademy.utils.AndroidLogger
 import com.cube.cubeacademy.utils.Logger
+import com.cube.cubeacademy.utils.UiEvent
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
@@ -34,6 +35,10 @@ class Repository(
      */
     fun getNominationsWithNominees(): Flow<List<NominationWithNominee>> {
         return nominationDao.getNominationsWithNominees()
+    }
+
+    fun getNominees(): Flow<List<Nominee>> {
+        return nominationDao.getAllNominees()
     }
 
     /**
@@ -88,8 +93,19 @@ class Repository(
         }
     }
 
-    suspend fun createNomination(nomineeId: String, reason: String, process: String): Nomination? {
-        // TODO: Write the code to create a new nomination using the api
-        return null
+    suspend fun createNomination(
+        nomineeId: String,
+        reason: String,
+        process: String
+    ): UiEvent<Nomination> {
+        return try {
+            val response = api.createNomination(nomineeId, reason, process)
+            response.data?.let {
+                UiEvent.Success(it)
+            } ?: UiEvent.Error("No data returned from the server")
+        } catch (e: Exception) {
+            UiEvent.Error(e.message ?: "An error occurred during nomination creation")
+        }
     }
+
 }

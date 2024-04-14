@@ -1,153 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical"
-	tools:context=".activities.CreateNominationActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.CreateNominationActivity">
 
-	<androidx.appcompat.widget.Toolbar
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/black"
-		android:paddingBottom="10dp"
-		android:paddingTop="30dp">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:paddingTop="30dp"
+        android:paddingBottom="10dp">
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			style="@style/bold_headline_small"
-			android:layout_gravity="center_horizontal"
-			android:text="@string/create_a_nomination"
-			android:textColor="@color/white" />
-	</androidx.appcompat.widget.Toolbar>
+        <TextView
+            style="@style/bold_headline_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/create_a_nomination"
+            android:textColor="@color/white" />
+    </androidx.appcompat.widget.Toolbar>
 
-	<androidx.core.widget.NestedScrollView
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-			<ImageView
-				android:layout_width="match_parent"
-				android:layout_height="180dp"
-				android:importantForAccessibility="no"
-				android:scaleType="centerCrop"
-				android:src="@drawable/artwork_create" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:src="@drawable/artwork_create" />
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:paddingBottom="50dp"
-				android:paddingHorizontal="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="50dp">
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/bold_headline_small"
-					android:layout_marginTop="30dp"
-					android:text="@string/id_like_to_nominate"
-					android:textColor="@color/black" />
+                <TextView
+                    style="@style/bold_headline_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/id_like_to_nominate"
+                    android:textColor="@color/black" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/body"
-					android:layout_marginTop="8dp"
-					android:text="@string/id_like_to_nominate_subtitle"
-					android:textColor="@color/black" />
+                <TextView
+                    style="@style/body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/id_like_to_nominate_subtitle"
+                    android:textColor="@color/black" />
 
-				<!-- TODO: Add the drop down selector of nominees -->
+                <!-- TODO: Add the drop down selector of nominees -->
+                <TextView
+                    style="@style/bold_headline_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/cubes_name"
+                    android:textColor="@color/black" />
 
-				<View
-					android:layout_width="match_parent"
-					android:layout_height="1dp"
-					android:background="@color/grey_mild"
-					android:layout_marginTop="40dp" />
+                <!-- <Spinner
+                     android:id="@+id/cube_name_list"
+                     style="@style/spinner"
+                     android:layout_width="fill_parent"
+                     android:layout_height="50dp"
+                     android:dropDownVerticalOffset="50dp" />-->
+                <com.cube.cubeacademy.lib.adapters.NomineeSpinner
+                    android:id="@+id/cube_name_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_outline_grey"
+                    android:dropDownVerticalOffset="50dp"
+                    android:gravity="center_vertical"
+                    android:padding="0dp"
+                    android:spinnerMode="dropdown"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    android:textSize="16sp" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/bold_headline_small"
-					android:layout_marginTop="30dp"
-					android:text="@string/reason_title"
-					android:textColor="@color/black" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/grey_mild" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/body"
-					android:layout_marginTop="8dp"
-					android:text="@string/reason_subtitle"
-					android:textColor="@color/black" />
+                <TextView
+                    style="@style/bold_headline_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/reason_title"
+                    android:textColor="@color/black" />
 
-				<!-- TODO: Add the Edit text for the reason -->
+                <TextView
+                    style="@style/body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/reason_subtitle"
+                    android:textColor="@color/black" />
 
-				<View
-					android:layout_width="match_parent"
-					android:layout_height="1dp"
-					android:background="@color/grey_mild"
-					android:layout_marginTop="40dp" />
+                <!-- TODO: Add the Edit text for the reason -->
+                <TextView
+                    style="@style/bold_headline_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/reasoning"
+                    android:textColor="@color/black" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/bold_headline_small"
-					android:layout_marginTop="30dp"
-					android:text="@string/process_title"
-					android:textColor="@color/black" />
+                <EditText
+                    android:id="@+id/et_reason"
+                    style="@style/edittext_multiline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:hint="@string/reasoning_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:maxLength="280"
+                    android:minLines="9"
+                    android:padding="8dp"
+                    android:textAppearance="@style/body" />
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					style="@style/body"
-					android:layout_marginTop="8dp"
-					android:text="@string/process_subtitle"
-					android:textColor="@color/black" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/grey_mild" />
 
-				<!-- TODO: Add the Radio button for the feedback -->
-			</LinearLayout>
+                <TextView
+                    style="@style/bold_headline_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/process_title"
+                    android:textColor="@color/black" />
 
-		</LinearLayout>
+                <TextView
+                    style="@style/body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/process_subtitle"
+                    android:textColor="@color/black" />
 
-	</androidx.core.widget.NestedScrollView>
+                <!-- TODO: Add the Radio button for the feedback -->
+                <RadioGroup
+                    android:id="@+id/myRadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/white"
-		android:clipChildren="false"
-		android:clipToPadding="false"
-		android:elevation="10dp"
-		android:gravity="center_vertical"
-		android:orientation="horizontal"
-		android:paddingHorizontal="24dp"
-		android:paddingVertical="20dp">
+                    <RadioButton
+                        android:id="@+id/radioButton1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_radio_button"
+                        android:drawableLeft="@drawable/very_unfair"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="rtl"
+                        android:paddingLeft="10dp"
+                        android:text="Very Unfair"
+                        android:textSize="16sp" />
 
-		<androidx.appcompat.widget.AppCompatButton
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:id="@+id/back_button"
-			style="@style/button_outline"
-			android:layout_marginEnd="7dp"
-			android:layout_weight="1"
-			android:text="@string/back" />
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_radio_button"
+                        android:drawableLeft="@drawable/unfair"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="rtl"
+                        android:paddingLeft="10dp"
+                        android:text="Unfair"
+                        android:textSize="16sp" />
 
-		<androidx.appcompat.widget.AppCompatButton
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:id="@+id/submit_button"
-			style="@style/button"
-			android:enabled="false"
-			android:layout_marginStart="7dp"
-			android:layout_weight="2"
-			android:text="@string/submit_nomination" />
+                    <RadioButton
+                        android:id="@+id/radioButton3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_radio_button"
+                        android:drawableLeft="@drawable/notsure"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="rtl"
+                        android:paddingLeft="10dp"
+                        android:text="Not Sure"
+                        android:textSize="16sp" />
 
-	</LinearLayout>
+                    <RadioButton
+                        android:id="@+id/radioButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_radio_button"
+                        android:drawableLeft="@drawable/fair"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="rtl"
+                        android:paddingLeft="10dp"
+                        android:text="Fair"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_radio_button"
+                        android:drawableLeft="@drawable/veryfair"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical|start"
+                        android:layoutDirection="rtl"
+                        android:paddingLeft="10dp"
+                        android:text="Very Fair"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/back_button"
+            style="@style/button_outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:layout_weight="1"
+            android:text="@string/back" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit_button"
+            style="@style/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_weight="2"
+            android:enabled="false"
+            android:text="@string/submit_nomination" />
+
+    </LinearLayout>
 </LinearLayout>

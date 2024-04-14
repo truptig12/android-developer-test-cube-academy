@@ -13,4 +13,5 @@
 	<color name="success_400">#3300ED71</color>
 	<color name="error_500">#FFF40256</color>
 	<color name="error_400">#26F40256</color>
+	<color name="mid_grey">#C3C3C3</color>
 </resources>

@@ -21,4 +21,7 @@ interface NominationDao {
     @Transaction
     @Query("SELECT * FROM nomination")
     fun getNominationsWithNominees(): Flow<List<NominationWithNominee>>
+
+    @Query("SELECT * FROM nominee")
+    fun getAllNominees(): Flow<List<Nominee>>
 }
