@@ -43,6 +43,10 @@ android {
 		viewBinding = true
 		buildConfig = true
 	}
+	packagingOptions {
+		pickFirst("META-INF/LICENSE.md")
+		pickFirst("META-INF/LICENSE-notice.md")
+	}
 }
 
 dependencies {
@@ -75,4 +79,18 @@ dependencies {
 	// ViewModel
 	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 	implementation ("androidx.activity:activity-ktx:1.8.2")
+
+	testImplementation ("io.mockk:mockk:1.13.10")
+	testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+	testImplementation ("androidx.arch.core:core-testing:2.2.0")
+	testImplementation("app.cash.turbine:turbine:0.8.0")
+
+	androidTestImplementation("androidx.test.ext:junit:1.1.5")
+	androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+	androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+	kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+	androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
+	androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
+	androidTestImplementation("app.cash.turbine:turbine:0.8.0")
+	androidTestImplementation ("io.mockk:mockk:1.13.10")
 }

@@ -1,7 +1,10 @@
 package com.cube.cubeacademy.lib.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
@@ -9,6 +12,7 @@ import android.widget.ListView
 import android.widget.PopupWindow
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.cube.cubeacademy.R
 import com.cube.cubeacademy.activities.CreateNominationActivity
 import com.cube.cubeacademy.lib.models.Nominee
@@ -34,7 +38,14 @@ class NomineeSpinner @JvmOverloads constructor(
         isClickable = true
         setOnClickListener(this)
         updateDisplayText()
-        setPadding(48, 0, 0, 16) // Adjust left padding as needed
+        setPadding(48, 0, 48, 16) // Adjust left padding as needed
+      //  setPadding(12, 12, 12, 12)
+        typeface = ResourcesCompat.getFont(context, R.font.anonymous_pro_regular)
+        gravity = Gravity.CENTER_VERTICAL
+        minHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48f, resources.displayMetrics).toInt()
+        setTextColor(Color.BLACK)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+        setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.spinner_icon, 0)
     }
 
     fun setItems(newItems: List<Nominee>) {

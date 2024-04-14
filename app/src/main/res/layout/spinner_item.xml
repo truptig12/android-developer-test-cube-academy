@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp"
-
     android:fontFamily="@font/anonymous_pro_regular"
     android:gravity="center_vertical"
     android:minHeight="?attr/dropdownListPreferredItemHeight"

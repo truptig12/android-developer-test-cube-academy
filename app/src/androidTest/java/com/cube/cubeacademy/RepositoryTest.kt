@@ -1,8 +1,13 @@
 package com.cube.cubeacademy
 
+import app.cash.turbine.test
 import com.cube.cubeacademy.lib.di.Repository
+import com.cube.cubeacademy.utils.UiEvent
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import junit.framework.TestCase.assertTrue
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -22,17 +27,28 @@ class RepositoryTest {
 	}
 
 	@Test
-	fun getNominationsTest() {
-		// TODO: Write a test for getting all the nominations from the mock api
+	fun createNominationTest() = runTest {
+
+		val response = repository.createNomination(nomineeId = "1", reason = "Good", process = "Process")
+		assertTrue(response is UiEvent.Success)
+		response as UiEvent.Success
 	}
 
 	@Test
-	fun getNomineesTest() {
-		// TODO: Write a test for getting all the nominees from the mock api
+	fun getNominationsTest()= runTest  {
+		repository.getNominationsWithNominees().test {
+			val event = awaitItem()
+			Assert.assertTrue(event.isNotEmpty())
+			cancelAndIgnoreRemainingEvents()
+		}
 	}
 
 	@Test
-	fun createNominationTest() {
-		// TODO: Write a test for creating a new nomination using the mock api
+	fun getNomineesTest() = runTest {
+		repository.getNominees().test {
+			val event = awaitItem()
+			Assert.assertTrue(event.isNotEmpty())
+			cancelAndIgnoreRemainingEvents()
+		}
 	}
 }

@@ -4,8 +4,10 @@ import android.app.Application
 import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
 import com.cube.cubeacademy.lib.api.ApiService
+import com.cube.cubeacademy.lib.db.NominationDao
 import com.cube.cubeacademy.lib.di.AppModule
 import com.cube.cubeacademy.lib.di.Repository
+import com.cube.cubeacademy.utils.AndroidLogger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.testing.HiltTestApplication
@@ -28,5 +30,10 @@ object AppTestModule {
 
 	@Singleton
 	@Provides
-	fun provideRepository(api: ApiService): Repository = Repository(api)
+	fun provideNominationDao(): NominationDao = FakeNominationDao()
+
+
+	@Singleton
+	@Provides
+	fun provideRepository(api: ApiService, nominationDao: NominationDao): Repository = Repository(api, nominationDao)
 }

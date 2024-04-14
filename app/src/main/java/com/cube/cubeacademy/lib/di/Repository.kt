@@ -46,13 +46,9 @@ class Repository(
      * simplifying the management of data synchronization
      */
     suspend fun refreshData() {
-        try {
-            getAllNominations()
-            getAllNominees()
 
-        } catch (e: Exception) {
-            Log.e("Exception", e.message.toString())
-        }
+        getAllNominations()
+        getAllNominees()
     }
 
     /**
@@ -71,6 +67,8 @@ class Repository(
             logger.error("IOException", "Error refreshing data: ${e.message}")
         } catch (e: SQLiteException) {
             logger.error("SQLiteException", "Error refreshing data: ${e.message}")
+        } catch (e: Exception) {
+            logger.error("Exception", e.message.toString())
         }
     }
 
@@ -90,6 +88,8 @@ class Repository(
             logger.error("IOException", "Error refreshing data: ${e.message}")
         } catch (e: SQLiteException) {
             logger.error("SQLiteException", "Error refreshing data: ${e.message}")
+        } catch (e: Exception) {
+            logger.error("Exception", e.message.toString())
         }
     }
 
