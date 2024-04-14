@@ -23,11 +23,14 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    /** Adapter for managing data in the RecyclerView*/
     private lateinit var nominationsAdapter: NominationsRecyclerViewAdapter
+
+    /** ViewModel instance provided by Hilt for managing UI-related data in a lifecycle-conscious way*/
     private val nominationViewModel by viewModels<NominationViewModel>()
 
-    @Inject
-    lateinit var repository: Repository
+    /*  @Inject
+      lateinit var repository: Repository*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +41,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateUI() {
-        setupRecyclerView()
-        createNewNomination()
+        setupRecyclerView() // Initialize RecyclerView and its adapter
+        createNewNomination() // Setup the listener for the 'Create New Nomination' button
 
+        // Begin observing nomination data from the ViewModel
         nominationViewModel.collectNominations()
+
+        // Collect UI events from the ViewModel to update the UI accordingly
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 nominationViewModel.events.collect { event ->
@@ -57,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         is UiEvent.Success -> {
+                            binding.progressBar.visibility = View.GONE
                             toggleEmptyState(event.data.isEmpty())
                             nominationsAdapter.submitList(event.data.sortedBy { it.nominee.firstName })
                         }
@@ -67,6 +74,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Sets up click listener for creating a new nomination.
+     */
     private fun createNewNomination() {
         binding.createButton.setOnClickListener {
             val intent = Intent(this, CreateNominationActivity::class.java)
@@ -74,12 +84,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Initializes and sets up the RecyclerView.
+     */
     private fun setupRecyclerView() {
         nominationsAdapter = NominationsRecyclerViewAdapter()
         binding.nominationsList.layoutManager = LinearLayoutManager(this)
         binding.nominationsList.adapter = nominationsAdapter
     }
 
+    /**
+     * Toggles visibility of list and empty state views based on whether the list is empty.
+     */
     private fun toggleEmptyState(isEmpty: Boolean) {
         binding.nominationsList.visibility = if (isEmpty) View.GONE else View.VISIBLE
         binding.emptyContainer.visibility = if (isEmpty) View.VISIBLE else View.GONE

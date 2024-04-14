@@ -17,6 +17,14 @@ import com.cube.cubeacademy.R
 import com.cube.cubeacademy.activities.CreateNominationActivity
 import com.cube.cubeacademy.lib.models.Nominee
 
+/**
+ * A custom spinner class derived from AppCompatTextView that acts as a dropdown menu for selecting a nominee.
+ * This component allows users to select a nominee from a list that pops up in a dropdown when the component is clicked.
+ *
+ * @param context the Context the view is running in
+ * @param attrs the attributes of the XML tag that is inflating the view.
+ * @param defStyleAttr an attribute in the current theme that contains a reference to a style resource to apply to this view.
+ */
 class NomineeSpinner @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.textViewStyle
 ) : AppCompatTextView(context, attrs, defStyleAttr), View.OnClickListener {
@@ -39,7 +47,6 @@ class NomineeSpinner @JvmOverloads constructor(
         setOnClickListener(this)
         updateDisplayText()
         setPadding(48, 0, 48, 16) // Adjust left padding as needed
-      //  setPadding(12, 12, 12, 12)
         typeface = ResourcesCompat.getFont(context, R.font.anonymous_pro_regular)
         gravity = Gravity.CENTER_VERTICAL
         minHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48f, resources.displayMetrics).toInt()

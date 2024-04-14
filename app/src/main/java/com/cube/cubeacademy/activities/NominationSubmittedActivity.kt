@@ -18,12 +18,14 @@ class NominationSubmittedActivity : AppCompatActivity() {
     }
 
     private fun populateUI() {
+        // Create an intent to start the CreateNominationActivity, allowing the user to create another nomination.
         binding.submitButton.setOnClickListener {
             val intent = Intent(this, CreateNominationActivity::class.java)
             startActivity(intent)
-            finish()
+            finish()  // Terminate the current activity to prevent returning to the submission screen via the back button.
         }
 
+        // Listener for the back button that navigates the user back to the MainActivity.
         binding.backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

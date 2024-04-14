@@ -21,7 +21,10 @@ class NominationsRecyclerViewAdapter : ListAdapter<NominationWithNominee, Nomina
 		val item = getItem(position)
 		holder.binding.apply {
 			/**
-			 * TODO: This should show the nominee name instead of their id! Where can you get their name from?
+			 * Binds the data from the provided NominationWithNominee object to the views in the ViewHolder.
+			 * The Nominee's name is retrieved from the Nominee object linked to each Nomination via a Room database relation.
+			 * This relation is defined in the NominationWithNominee data class where the Nominee object is annotated
+			 * with @Relation to link 'nomineeId' from the Nomination to 'nomineeId' in the Nominee entity.
 			 */
 			name.text = "${item.nominee.firstName} ${item.nominee.lastName}"
 			reason.text = item.nomination.reason

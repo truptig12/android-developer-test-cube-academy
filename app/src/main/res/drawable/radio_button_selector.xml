@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <item>
+        <selector>
+            <!-- Selected state -->
+            <item android:state_checked="true">
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="1dp"
+                        android:color="@color/black" />
+                    <padding
+                        android:bottom="10dp"
+                        android:left="10dp"
+                        android:right="10dp"
+                        android:top="10dp" />
+                    <elevation android:elevation="6dp" />
+                </shape>
+            </item>
+            <!-- Default state -->
+            <item>
+                <shape android:shape="rectangle">
+                    <stroke
+                        android:width="1dp"
+                        android:color="@color/mid_grey" />
+                    <padding
+                        android:bottom="10dp"
+                        android:left="10dp"
+                        android:right="50dp"
+                        android:top="10dp" />
+                    <elevation android:elevation="2dp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

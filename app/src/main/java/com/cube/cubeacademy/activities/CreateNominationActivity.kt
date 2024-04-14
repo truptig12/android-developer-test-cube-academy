@@ -29,22 +29,25 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class CreateNominationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNominationBinding
+
+    // ViewModel instance provided by Hilt, encapsulating the business logic of the activity
     private val createNominationViewModel by viewModels<CreateNominationViewModel>()
 
-    @Inject
-    lateinit var repository: Repository
+    /*  @Inject
+      lateinit var repository: Repository*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCreateNominationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupObservers()
-        setupListeners()
-        //populateUI()
+        populateUI()
     }
 
 
+    /**
+     * Set up observers and response handlers to react to data and state changes.
+     */
     private fun setupObservers() {
         createNominationViewModel.collectNominees()
         lifecycleScope.launch {
@@ -53,34 +56,24 @@ class CreateNominationActivity : AppCompatActivity() {
                     createNominationViewModel.events.collect { event ->
                         when (event) {
 
-                            is UiEvent.Error -> {
-                                Toast.makeText(
-                                    this@CreateNominationActivity,
-                                    event.message,
-                                    Toast.LENGTH_LONG
-                                ).show()
-//                            binding.progressBar.visibility = View.GONE
-                            }
-
-                            is UiEvent.Loading -> {
-                                // binding.progressBar.visibility =  View.VISIBLE
-                            }
-
+                            is UiEvent.Error -> showError(event.message)
+                            is UiEvent.Loading -> showLoading()
                             is UiEvent.Success -> {
-
+                                binding.progressBar.visibility = View.GONE
                                 updateSpinnerUI(event.data)
                             }
                         }
                     }
                 }
 
+                // Observing changes in form state to enable/disable submit button based on form validation
                 launch {
                     createNominationViewModel.formState.collect { formState ->
                         updateFormState(formState)
                     }
                 }
 
-                launch {
+                launch {// Handling response to the submission of a nomination
                     createNominationViewModel.nominationEvent.collect { nominationEvent ->
                         handleNominationState(nominationEvent)
                     }
@@ -89,6 +82,9 @@ class CreateNominationActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up listeners for UI elements to react to user interactions.
+     */
     private fun setupListeners() {
         binding.etReason.addTextChangedListener { createNominationViewModel.validateReason(it.toString()) }
         binding.myRadioGroup.setOnCheckedChangeListener { _, checkedId ->
@@ -98,19 +94,34 @@ class CreateNominationActivity : AppCompatActivity() {
         binding.submitButton.setOnClickListener { createNominationViewModel.submitData() }
     }
 
+    /**
+     * Shows a loading indicator while data is being processed.
+     */
     private fun showLoading() {
-        // Show loading indicator logic
+        binding.progressBar.visibility = View.VISIBLE
     }
 
+
+    /**
+     * Handles successful nomination submission by navigating to the success activity.
+     */
     private fun showSuccess() {
+        binding.progressBar.visibility = View.GONE
         startActivity(Intent(this, NominationSubmittedActivity::class.java))
         finish()
     }
 
+    /**
+     * Shows an error message using a Toast.
+     */
     private fun showError(message: String) {
+        binding.progressBar.visibility = View.GONE
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
+    /**
+     * Updates the form state based on the validation of form fields.
+     */
     private fun updateFormState(formState: FormState) {
         binding.submitButton.isEnabled = formState.isSubmitEnabled
         binding.backButton.setOnClickListener {
@@ -118,6 +129,9 @@ class CreateNominationActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Manages the UI response based on the nomination creation state.
+     */
     private fun handleNominationState(resource: UiEvent<Nomination>) {
         when (resource) {
             is UiEvent.Error -> showError(resource.message)
@@ -126,6 +140,9 @@ class CreateNominationActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Updates the nominees spinner with the list of nominees.
+     */
     private fun updateSpinnerUI(nominees: List<Nominee>) {
         val nomineesWithPrompt = listOf(Nominee("0", "Select", "Option")) + nominees
         binding.cubeNameList.setItems(nomineesWithPrompt)
@@ -133,14 +150,18 @@ class CreateNominationActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Sets up the UI components and binds observers and listeners.
+     */
     private fun populateUI() {
-        /**
-         * TODO: Populate the form after having added the views to the xml file (Look for TODO comments in the xml file)
-         * 		 Add the logic for the views and at the end, add the logic to create the new nomination using the api
-         * 		 The nominees drop down list items should come from the api (By fetching the nominee list)
-         */
+        setupObservers()
+        setupListeners()
     }
 
+
+    /**
+     * Inner class to handle item selection in the spinner for nominee selection.
+     */
     inner class NomineeSelectedListener : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
             val nomineeId =
@@ -151,6 +172,10 @@ class CreateNominationActivity : AppCompatActivity() {
         override fun onNothingSelected(parent: AdapterView<*>) {}
     }
 
+
+    /**
+     * Shows a bottom sheet dialog to confirm leaving the page when the back button is pressed.
+     */
     private fun showBottomSheet() {
         BottomSheetDialog(this).apply {
             setContentView(layoutInflater.inflate(R.layout.layout_bottom_sheet, null).apply {

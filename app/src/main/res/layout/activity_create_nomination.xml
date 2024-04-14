@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context=".activities.CreateNominationActivity">
 
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,9 +23,14 @@
             android:textColor="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1">
 
         <LinearLayout
@@ -71,12 +77,6 @@
                     android:text="@string/cubes_name"
                     android:textColor="@color/black" />
 
-                <!-- <Spinner
-                     android:id="@+id/cube_name_list"
-                     style="@style/spinner"
-                     android:layout_width="fill_parent"
-                     android:layout_height="50dp"
-                     android:dropDownVerticalOffset="50dp" />-->
                 <com.cube.cubeacademy.lib.adapters.NomineeSpinner
                     android:id="@+id/cube_name_list"
                     android:layout_width="fill_parent"
@@ -244,7 +244,13 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />  <!-- Initially hidden; visible during loading -->
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

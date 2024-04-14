@@ -93,6 +93,12 @@ class Repository(
         }
     }
 
+
+    /**
+     * Attempts to create a nomination by sending data to a server-side API.
+     * @return A UiEvent representing either the success of the operation with the created Nomination object,
+     * or an error if something goes wrong.
+     */
     suspend fun createNomination(
         nomineeId: String,
         reason: String,
