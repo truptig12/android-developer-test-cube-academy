@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cube.cubeacademy.databinding.ViewNominationListItemBinding
+import com.cube.cubeacademy.lib.db.NominationWithNominee
 import com.cube.cubeacademy.lib.models.Nomination
 
-class NominationsRecyclerViewAdapter : ListAdapter<Nomination, NominationsRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
+class NominationsRecyclerViewAdapter : ListAdapter<NominationWithNominee, NominationsRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
 	class ViewHolder(val binding: ViewNominationListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,15 +23,15 @@ class NominationsRecyclerViewAdapter : ListAdapter<Nomination, NominationsRecycl
 			/**
 			 * TODO: This should show the nominee name instead of their id! Where can you get their name from?
 			 */
-			name.text = item.nomineeId
-			reason.text = item.reason
+			name.text = "${item.nominee.firstName} ${item.nominee.lastName}"
+			reason.text = item.nomination.reason
 		}
 	}
 
 	companion object {
-		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Nomination>() {
-			override fun areItemsTheSame(oldItem: Nomination, newItem: Nomination) = oldItem.nominationId == newItem.nominationId
-			override fun areContentsTheSame(oldItem: Nomination, newItem: Nomination) = oldItem == newItem
+		val DIFF_CALLBACK = object : DiffUtil.ItemCallback<NominationWithNominee>() {
+			override fun areItemsTheSame(oldItem: NominationWithNominee, newItem: NominationWithNominee) = oldItem.nomination.nominationId == newItem.nomination.nominationId
+			override fun areContentsTheSame(oldItem: NominationWithNominee, newItem: NominationWithNominee) = oldItem == newItem
 		}
 	}
 }
