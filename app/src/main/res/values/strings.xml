@@ -18,4 +18,9 @@
 	<string name="cubes_name"><font color='#FFF70087'>* </font>Cube’s name</string>
 	<string name="reasoning"><font color='#FFF70087'>* </font>Reasoning</string>
 	<string name="reasoning_hint">Reasoning</string>
+    <string name="very_unfair">Very Unfair</string>
+	<string name="unfair">Unfair</string>
+	<string name="not_sure">Not Sure</string>
+	<string name="fair">Fair</string>
+	<string name="very_fair">Very Fair</string>
 </resources>

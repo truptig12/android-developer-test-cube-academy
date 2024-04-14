@@ -28,222 +28,208 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:importantForAccessibility="no"
-                android:scaleType="centerCrop"
-                android:src="@drawable/artwork_create" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingBottom="50dp">
+                android:orientation="vertical">
 
-                <TextView
-                    style="@style/bold_headline_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/id_like_to_nominate"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    style="@style/body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/id_like_to_nominate_subtitle"
-                    android:textColor="@color/black" />
-
-                <!-- TODO: Add the drop down selector of nominees -->
-                <TextView
-                    style="@style/bold_headline_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/cubes_name"
-                    android:textColor="@color/black" />
-
-                <com.cube.cubeacademy.lib.adapters.NomineeSpinner
-                    android:id="@+id/cube_name_list"
-                    android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/bg_outline_grey"
-                    android:dropDownVerticalOffset="50dp"
-                    android:gravity="center_vertical"
-                    android:padding="0dp"
-                    android:spinnerMode="dropdown"
-                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-                    android:textSize="16sp" />
-
-                <View
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@color/grey_mild" />
+                    android:layout_height="180dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/artwork_create" />
 
-                <TextView
-                    style="@style/bold_headline_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/reason_title"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    style="@style/body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/reason_subtitle"
-                    android:textColor="@color/black" />
-
-                <!-- TODO: Add the Edit text for the reason -->
-                <TextView
-                    style="@style/bold_headline_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/reasoning"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/et_reason"
-                    style="@style/edittext_multiline"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:hint="@string/reasoning_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="textMultiLine"
-                    android:maxLength="280"
-                    android:minLines="9"
-                    android:padding="8dp"
-                    android:textAppearance="@style/body" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="50dp">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@color/grey_mild" />
+                    <TextView
+                        style="@style/bold_headline_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/id_like_to_nominate"
+                        android:textColor="@color/black" />
 
-                <TextView
-                    style="@style/bold_headline_small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/process_title"
-                    android:textColor="@color/black" />
+                    <TextView
+                        style="@style/body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/id_like_to_nominate_subtitle"
+                        android:textColor="@color/black" />
 
-                <TextView
-                    style="@style/body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/process_subtitle"
-                    android:textColor="@color/black" />
+                    <!-- TODO: Add the drop down selector of nominees -->
+                    <TextView
+                        style="@style/bold_headline_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/cubes_name"
+                        android:textColor="@color/black" />
 
-                <!-- TODO: Add the Radio button for the feedback -->
-                <RadioGroup
-                    android:id="@+id/myRadioGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="vertical">
-
-                    <RadioButton
-                        android:id="@+id/radioButton1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/bg_radio_button"
-                        android:drawableLeft="@drawable/very_unfair"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:gravity="center_vertical|start"
-                        android:layoutDirection="rtl"
-                        android:paddingLeft="10dp"
-                        android:text="Very Unfair"
+                    <com.cube.cubeacademy.lib.adapters.NomineeSpinner
+                        android:id="@+id/cube_name_list"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_outline_grey"
+                        android:dropDownVerticalOffset="50dp"
+                        android:gravity="center_vertical"
+                        android:padding="0dp"
+                        android:spinnerMode="dropdown"
+                        android:textAppearance="?android:attr/textAppearanceListItemSmall"
                         android:textSize="16sp" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton2"
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_radio_button"
-                        android:drawableLeft="@drawable/unfair"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:gravity="center_vertical|start"
-                        android:layoutDirection="rtl"
-                        android:paddingLeft="10dp"
-                        android:text="Unfair"
-                        android:textSize="16sp" />
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/grey_mild" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton3"
+                    <TextView
+                        style="@style/bold_headline_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/reason_title"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/reason_subtitle"
+                        android:textColor="@color/black" />
+
+                    <!-- TODO: Add the Edit text for the reason -->
+                    <TextView
+                        style="@style/bold_headline_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/reasoning"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/et_reason"
+                        style="@style/edittext_multiline"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_radio_button"
-                        android:drawableLeft="@drawable/notsure"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:gravity="center_vertical|start"
-                        android:layoutDirection="rtl"
-                        android:paddingLeft="10dp"
-                        android:text="Not Sure"
-                        android:textSize="16sp" />
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/reasoning_hint"
+                        android:importantForAutofill="no"
+                        android:inputType="textMultiLine"
+                        android:maxLength="280"
+                        android:minLines="9"
+                        android:padding="8dp"
+                        android:textAppearance="@style/body" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton4"
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_radio_button"
-                        android:drawableLeft="@drawable/fair"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:gravity="center_vertical|start"
-                        android:layoutDirection="rtl"
-                        android:paddingLeft="10dp"
-                        android:text="Fair"
-                        android:textSize="16sp" />
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/grey_mild" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton5"
+                    <TextView
+                        style="@style/bold_headline_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/process_title"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/process_subtitle"
+                        android:textColor="@color/black" />
+
+                    <!-- TODO: Add the Radio button for the feedback -->
+                    <RadioGroup
+                        android:id="@+id/myRadioGroup"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_radio_button"
-                        android:drawableLeft="@drawable/veryfair"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:gravity="center_vertical|start"
-                        android:layoutDirection="rtl"
-                        android:paddingLeft="10dp"
-                        android:text="Very Fair"
-                        android:textSize="16sp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
 
-                </RadioGroup>
+                        <RadioButton
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/very_unfair"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical|start"
+                            android:layoutDirection="rtl"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/very_unfair" />
+
+                        <RadioButton
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="12dp"
+                            android:drawableLeft="@drawable/unfair"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical|start"
+                            android:layoutDirection="rtl"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/unfair" />
+
+                        <RadioButton
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="12dp"
+                            android:drawableLeft="@drawable/notsure"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical|start"
+                            android:layoutDirection="rtl"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/not_sure" />
+
+                        <RadioButton
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="12dp"
+                            android:drawableLeft="@drawable/fair"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical|start"
+                            android:layoutDirection="rtl"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/fair" />
+
+                        <RadioButton
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="12dp"
+                            android:drawableLeft="@drawable/veryfair"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical|start"
+                            android:layoutDirection="rtl"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/very_fair" />
+
+                    </RadioGroup>
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -251,6 +237,7 @@
             android:layout_gravity="center"
             android:visibility="gone" />  <!-- Initially hidden; visible during loading -->
     </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
